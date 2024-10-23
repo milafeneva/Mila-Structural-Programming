@@ -1,0 +1,14 @@
+Да се напише програма која ќе ја отстрани првата и последната цифра од внесен петцифрен број N. Да се испечати збирот на првата и последната цифра. 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Vnesi petcifren broj: ";
+    cin >> n;
+    int prva_cifra = n / 10000 % 10;
+    int posledna_cifra = n % 10;
+    cout << prva_cifra + posledna_cifra << endl;
+    return 0;
+}
