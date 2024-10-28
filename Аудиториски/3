@@ -1,0 +1,18 @@
+Да се напише програма што од n броеви (внесени од тастатура) ќе го определи бројот на броеви што се деливи со 3, при делењето со 3 имаат остаток 1, односно 2.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 1;
+    int del3, r1, r2 = 0;
+    for (int i = n; i <= 100; i++) {
+        if (i % 3 == 0) del3++;
+        else if (i % 3 == 1) r1++;
+        else if (i % 3 == 2) r2++;
+    }
+    cout << "Delivi so 3: " << del3 << endl;
+    cout << "So ostatok 1: " << r1 << endl;
+    cout << "So ostok 2: " << r2 << endl;
+    return 0;
+}
