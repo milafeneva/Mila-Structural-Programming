@@ -18,3 +18,21 @@ int main() {
     }
     return 0;
 }
+2 nacin: 
+ #include <iostream>
+using namespace std;
+
+int main() {
+    int n, max;
+    int flag = 1;
+    while (cin >> n) {
+        if (flag == 1) {
+            max = n;
+            flag = 0;
+        }
+        if (n > max) {
+            max = n;
+        }
+    }
+    cout << max << endl;
+}
