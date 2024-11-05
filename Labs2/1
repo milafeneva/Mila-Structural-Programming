@@ -1,1 +1,47 @@
+Напишете програма која чита два природни броја, почеток и крај, од стандардниот влез. 
+Потоа програмата треба да ги пронајде и отпечати палиндромите во опсегот [почеток, крај]. 
+Палиндром се дефинира како број што останува ист и кога неговите цифри се во обратен редослед.
+Ваша задача е да ги најдете најмалите и најголемите палиндроми во дадениот опсег. 
+
+For example:
+Input    Result
+10 50
+Smallest Palindromic Number: 11
+Largest Palindromic Number: 44
+
+#include <iostream>
+using namespace std;
+
+
+int reverseNumber(int number) {
+    int reverseNumber = 0;
+    while (number != 0) {
+        reverseNumber = reverseNumber * 10 + number % 10;
+        number = number / 10;
+    }
+    return reverseNumber;
+}
+
+int main() {
+    int broj1, broj2;
+    cin>>broj1>>broj2;
+
+    int smallestPalindrom = 0;
+    int biggestPalindrom = 0;
+    bool foundPalindrom = false;
+
+    for (int i = broj1; i <= broj2; i++) {
+        if (reverseNumber(i) == i) {
+            if(!foundPalindrom) {
+                smallestPalindrom = i;
+                foundPalindrom = true;
+            }
+            biggestPalindrom = i;
+        }
+    }
+    cout << "Smallest palindrom: "<< smallestPalindrom << endl;
+    cout << "Biggest palindrom: " << biggestPalindrom << endl;
+    return 0;
+}
+
 
