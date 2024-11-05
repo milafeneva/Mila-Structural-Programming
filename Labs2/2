@@ -1,0 +1,24 @@
+Да се внесат позитивни цели броеви и за секој влез да се испечати која е најголемата цифра во бројот.
+Доколку се внесе нешто што не е број, да се испечати најголемата цифра
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m;
+    while (cin>>m) {
+        if (m < 0) break;
+        int temp = m;
+        int max = 1;
+        while (temp > 0) {
+            int digit = temp % 10;
+            if (digit > max) {
+                max = digit;
+            }
+            temp /= 10;
+        }
+        
+        cout << max << endl;
+    }
+
+}
