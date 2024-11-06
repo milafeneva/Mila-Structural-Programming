@@ -1,0 +1,37 @@
+Да се напише програма која што ќе ги отпечати сите четирицифрени природни броеви кои се деливи со 
+збирот на двата броја составени од првите две цифри и од последните две цифри на четирицифрениот број. 
+На крајот треба да отпечати и колку вакви броеви се пронајдени.
+
+#include <algorithm>
+#include <iostream>
+#include <bits/ranges_algo.h>
+using namespace std;
+
+int sumOfFirstTwo(int);
+int sumOfSecondTwo(int);
+
+int main() {
+
+    int count = 0;
+    for (int i = 1000; i <= 9999; i++) {
+        if (i % sumOfFirstTwo(i) + sumOfSecondTwo(i) == 0) {
+            count++;
+        }
+    }
+    cout << count << endl;
+}
+
+int sumOfFirstTwo(int m) {
+    int sum = 0;
+    sum = (m%10) + (m/10%10);
+    return sum;
+}
+int sumOfSecondTwo(int n) {
+    int sum = 0;
+    int temp = n / 100;
+    while (temp > 0) {
+        sum += temp % 10;
+        temp = temp / 10;
+    }
+    return sum;
+}
