@@ -3,24 +3,29 @@
 
 #include <iostream>
 using namespace std;
-int main()
-{
+
+int main() {
     int x;
-    int Max, suma=0, brojac=0;
-    while(cin>>x){
-        int temp=x;
-        Max=0;
-            while(temp>0){
-                int last=temp%10;
-                if(last>Max){
-                    Max=last;
-                }
-                temp/=10;
+    int max;
+    int suma = 0;
+    int counter = 0;
+    while (cin>>x) {
+        int temp = x;
+        max = 0;
+        while (temp > 0) {
+            int last = temp % 10;
+            if (last > max) {
+                max = last;
             }
-            cout<<Max<<endl;
-            suma+=Max;
-            brojac++;
+            temp = temp / 10;
+        }
+        cout << max << endl;
+        suma += max;
+        counter++;
     }
+    cout << suma/counter;
+    return 0;
+}
     cout<<suma/brojac;
     return 0;
 }
