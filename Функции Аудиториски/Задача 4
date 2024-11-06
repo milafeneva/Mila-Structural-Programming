@@ -1,0 +1,34 @@
+Да се напише програма што ќе ги отпечати сите прости броеви помали од 10000 чиј што збир на цифри е исто така прост број. 
+На крајот да се отпечати колку вакви броеви се пронајдени.
+
+#include <iostream>
+using namespace std;
+
+int prostBroj(int n) {
+    for (int i = 2; i*i <= n; i++) {
+        if (n % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+int numOfDigits(int m) {
+    int count = 0;
+    while (m != 0) {
+        m = m / 10;
+        count++;
+    }
+    return count;
+}
+
+int main() {
+    int count = 0;
+    for (int i = 10000; i > 0; i--) {
+        if (prostBroj(i) && prostBroj(numOfDigits(i))) {
+            cout << i << endl;
+            count++;
+        }
+    }
+    cout << count << endl;
+    return 0;
+}
