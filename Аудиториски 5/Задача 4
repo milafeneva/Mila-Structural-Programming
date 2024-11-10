@@ -6,16 +6,13 @@
 using namespace std;
 
 int main() {
-    int n, max;
-    if (cin >> max && max <= 100) {
-        while (cin >> n) {
-            if (max < n) {
-                max = n;
-            } else {
-                cout << "Ne e vnesen broj.";
-            }
+    int max, broj;
+    cin >> max;
+    while (cin >> broj) {
+        if (broj > 100) continue;
+        if (broj > max) {
+            max = broj;
         }
-        cout << max;
-        return 0;
     }
+    cout << max << endl;
 }
