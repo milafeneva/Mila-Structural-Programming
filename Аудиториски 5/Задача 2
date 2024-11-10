@@ -1,0 +1,29 @@
+Да се напише програма што ќе ги испечати сите броеви од зададен опсег кои се читаат исто и 
+одлево надесно и оддесно налево.
+
+пример броеви:
+12321 5061605
+
+#include <iostream>
+using namespace std;
+
+int palindrom(int m) {
+    int reversed = 0;
+    while (m != 0) {
+        reversed = reversed * 10 + m % 10;
+        m = m / 10;
+    }
+    return reversed;
+}
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    for (int i = a; i <= b; i++) {
+        if (palindrom(i) == i) {
+            cout << i << endl;
+        }
+    }
+    return 0;
+}
+
