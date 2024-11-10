@@ -1,0 +1,25 @@
+Да се напише програма што од непознат број на цели броеви што се внесуваат од тастатура ќе ги определи двата броја со најголеми вредности. 
+Програмата завршува ако се внесе невалидна репрезентација на број.
+пример
+Ако се внесат броевите 2 4 7 4 2 1 8 6 9 7 10 3 програмата ќе отпечати 10 и 9.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int max, secondMax, number;
+    cin >> max >> secondMax;
+    while (cin >> number) {
+        if (number > max) {
+            int temp = max;
+            max = number;
+            number = temp;
+        }
+        if (number > secondMax) {
+            int temp = secondMax;
+            secondMax = number;
+            number = temp;
+        }
+    }
+    cout << max << " " << secondMax << endl;
+}
