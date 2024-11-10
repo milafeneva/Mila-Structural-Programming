@@ -2,40 +2,35 @@
 Ако оваа разлика е помала од 10 на екран се печати “Dvete sumi se slicni”, а во спротивно “Dvete sumi mnogu se razlikuvaat”.
 
 пример
-
 За броевите внесени од тастатура:
-
 2 4 3 4 2 1 1 6 1 7
-
 suma_neparni_pozicii = 9
-
 suma_parni_pozicii = 22
-
 На екран ќе се испечати:
-
 Dvete sumi mnogu se razlikuvaat
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 int main() {
-    int difference, i, n = 0, number = 0;
-    int sum_odd_positions = 0, sum_even_positions = 0;
+    int n, broevi;
     cin >> n;
-    for (i = 1; i <= n; i++) {
-        cin >> number;
-        if (i % 2) {
-            sum_odd_positions += number;
+    int suma_parni = 0;
+    int suma_neparni = 0;
+    for (int i = 1; i <= n; i++) {
+        cin >> broevi;
+        if (i % 2 == 0) {
+            suma_parni += broevi;
         } else {
-            sum_even_positions += number;
+            suma_neparni += broevi;
         }
     }
-    difference = sum_even_positions - sum_odd_positions;
-    if (abs(difference) < 10){
-        cout << "Dvete sumi se slicni";
+    cout <<" Suma na parni pozicii: " << suma_parni << endl;
+    cout << "Suma neparni: " << suma_neparni << endl;
+    if (abs(suma_neparni - suma_parni) < 10) {
+        cout << "Dvete sumi se slicni" << endl;
     } else {
-        cout << "Dvete sumi mnogu se razlikuvaat";
+        cout << "Dvete sumi mnogu se razlikuvaat" << endl;
     }
     return 0;
 }
