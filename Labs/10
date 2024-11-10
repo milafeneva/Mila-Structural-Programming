@@ -1,0 +1,32 @@
+// Од тастатура се внесуваат цели броеви се додека не се внесе нешто што не е цел број.
+// Да се испечати на екран сумата на броевите во кои цифрите се подредени во опаѓачки редослед. Доколку нема такви броеви, да се испечати порака NEMA.
+
+#include <iostream>
+using namespace std;
+
+bool ifDescendingOrder(int a) {
+    if (a < 10) return true;
+    int previous_digit = a % 10;
+    a /= 10;
+    while (a!=0) {
+        int current = a%10;
+        if (previous_digit > current) {
+            return false;
+        }
+        previous_digit = current;
+        a /= 10;
+    }
+    return true;
+}
+
+int main() {
+    int broevi, zbir = 0;
+    while (cin>>broevi) {
+        if (ifDescendingOrder(broevi)) {
+            zbir+=broevi;
+        } else if (zbir == 0) {
+            cout << "NEMA";
+        }
+    }
+    cout << zbir;
+}
