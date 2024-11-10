@@ -36,3 +36,17 @@ int main() {
     }
     cout << max << endl;
 }
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int max, broj;
+    cin >> max;
+    while (cin >> broj) {
+        if (broj > max) {
+            max = broj;
+        }
+    }
+    cout << max << endl;
+}
