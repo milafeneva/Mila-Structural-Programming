@@ -1,0 +1,37 @@
+Да се напише програма што ќе ги отпечати сите прости броеви помали од 10000 чиј што збир на цифри е исто така прост број. 
+На крајот да се отпечати колку вакви броеви се пронајдени.
+
+#include <iostream>
+using namespace std;
+
+//da gi ispecati site prosti do 10000 cij zbir e prost
+
+int isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i*i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+bool zbirNaCifri(int m) {
+    int zbir = 0;
+    while (m!=0) {
+        zbir += m%10;
+        m = m/10;
+    }
+    return isPrime(zbir);
+}
+
+int main() {
+    int n = 10000;
+    int counter = 0;
+    for (int i = n; i > 0; i--) {
+        if (isPrime(i) && zbirNaCifri(i)) {
+            cout << i << " ";
+            counter++;
+        }
+    }
+    cout << endl;
+    cout << "Vkupno: " << counter << endl;
+    return 0;
+}
