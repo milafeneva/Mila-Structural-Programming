@@ -1,0 +1,33 @@
+Сума-рабен број на даден број се смета број за кој се печати цел број и за последните две се зема нивниот збир.
+се внесуваат цели броеви се додека не се внесе нешто различно од број
+123456789 (8 и 9) се заменнуваат со 17 и се добива 1234567(17)
+123456789 
+
+1234567(8+9)
+12345(6+7)
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    while (cin>>n) {
+        int temp = n;
+        while (temp >= 10) {
+            int firstDigit = temp % 10;
+            int secondDigit = (temp/10)%10;
+            temp/=100;
+
+            int sum = firstDigit + secondDigit;
+
+            temp*=10;
+            if(sum >= 10) {
+                temp*=10;
+            }
+
+            temp+=sum;
+            cout << temp << endl;
+        }
+    }
+    return 0;
+}
