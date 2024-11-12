@@ -1,0 +1,55 @@
+Се внесуваат броеви додека не се внесе нешто различно од број, да се види колку пати првиот број се повторува 
+во наредните броеви: 
+
+input:
+23
+123
+2323
+120
+
+output:
+123-->1
+2323-->2
+120-->0
+
+#include <iostream>
+using namespace std;
+
+int countDigits(int number) {
+    int count = 0;
+    while (number > 0) {
+        count++;
+        number /= 10;
+    }
+    return count;
+}
+
+int countOccurrences(int n, int broevi) {
+    int count = 0;
+    int n_digits = countDigits(n);
+    int divisor = 1;
+
+    for (int i = 0; i < n_digits; i++) {
+        divisor *= 10;
+    }
+    while (broevi >= n) {
+        if (broevi % divisor == n) {
+            count++;
+        }
+        broevi /= 10;
+    }
+
+    return count;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int broevi;
+    while (cin >> broevi) {
+        int result = countOccurrences(n, broevi);
+        cout << broevi << " --> " << result << endl;
+    }
+
+    return 0;
+}
