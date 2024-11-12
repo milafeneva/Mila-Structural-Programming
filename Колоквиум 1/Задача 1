@@ -1,0 +1,47 @@
+Непарен еквивалент:
+Од тастатура се читаат 2 позитивни броеви, поголеми од 0, доколку се внесе барем еден негативен број или 0
+да се испечати "Invalid input"
+Еден број е непарен еквивалент на друг број ако и само ако неговите цифри се наоѓаат на непарните 
+позиции од другиот број, по исти редослед.
+Најмалку значајна цифра е на позиција 1.
+
+1357 37--> DA
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int broj1, broj2;
+    cin >> broj1 >> broj2;
+    if (broj1 <= 0 || broj2 <= 0) {
+        cout << "Invalid input";
+        return 0;
+    }
+    int pogolemBroj;
+    int pomalBroj;
+    if (broj1 > broj2) {
+        pogolemBroj = broj1;
+        pomalBroj = broj2;
+    } else if (broj2 > broj1) {
+        pogolemBroj = broj2;
+        pomalBroj = broj1;
+    }
+    int positions = 1;
+    int neparniPozicii = 0;
+    int faktor = 1;
+    while (pogolemBroj > 0) {
+        if (positions % 2 != 0) {
+            int cifra = pogolemBroj % 10;
+            neparniPozicii += cifra * faktor;
+            faktor *= 10;
+        }
+        pogolemBroj /= 10;
+        positions++;
+    }
+    if (neparniPozicii == pomalBroj) {
+        cout << "DA";
+    } else {
+        cout << "NE";
+    }
+    return 0;
+}
