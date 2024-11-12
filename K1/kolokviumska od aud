@@ -1,0 +1,23 @@
+Да се напише програма со која се внесува цел број н а потоа се пресметува серијата (n*n)..etc
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin>>n;
+    if (n%2==1) {
+        n--;
+    }
+    int sum = 0;
+    int count = 0;
+    for (int i = n; i >= 2; i-=2) {
+        int product = i*i;
+        sum+=product;
+        cout << i << "*" << i << "=" << product << endl;
+        count++;
+    }
+    cout << sum << endl;
+    cout << (sum/count * 1.0) << endl;
+    return 0;
+}
