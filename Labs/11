@@ -1,0 +1,25 @@
+Се внесуваат броеви се додека не се внеси нешто што не е број, да се испечатат првите 2 најзначајни цифри. 
+
+#include <iostream>
+using namespace std;
+
+int firstTwoDigits(int n) {
+    while (n >= 100) {
+        n /= 10;
+    }
+    return n;
+}
+
+int main() {
+    int n;
+    while (cin >> n) {
+        if (n < 10) {
+            cout << n << endl;
+        } else if (n < 100) {
+            cout << n << endl;
+        } else {
+            cout << firstTwoDigits(n) << endl;
+        }
+    }
+    return 0;
+}
