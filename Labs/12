@@ -1,2 +1,38 @@
 Се внесуваат број n, цифра m, и p. Треба да се испечатат првите 10 броеви поголеми од n од каде што 
 цифрата м се повторува р пати. 
+
+#include <iostream>
+using namespace std;
+
+int matchDigits(int number, int number2) {
+    int count = 0;
+    while (number > 0) {
+        if (number % 10 == number2) {
+            count++;
+        }
+        number = number / 10;
+    }
+    return count;
+}
+int main() {
+    int n, m, p;
+    cin >> n;
+    cin >> m;
+    cin >> p;
+    int found = 0;
+    int i = n+1;
+    while (found < 10) {
+        if (matchDigits(i, m) == p) {
+            cout << i << endl;
+            found++;
+        }
+        i++;
+    }
+    // for (int i = n+1; i <= end; i++) {
+    //     if (matchDigits(i, m) == p) {
+    //         cout << i << endl;
+    //         end++;
+    //     }
+    // }
+    return 0;
+}
