@@ -1,0 +1,47 @@
+Од тастатура се внесуваат непознат број на цели броеви. Внесувањето завршува кога наместо број ќе биде внесен
+некаков знак. Да се напише програма која на екран ќе го испечати вкупниот број на броеви чиј што збир на парни цифри е поголем од 5
+и вкупниот број на броеви чиј што збир на непарни цифри е помал или еднаков на 5. Доколку бројот не содржи ниту една парна, односно непарна цифра,
+соодветниот збир се смета дека има вредност 0.
+
+Бидејќи бројот 34578 има збир парни цифри 8 + 4 = 12. Бидејќи 12 > 5, треба да се вклучи во броењето според
+критериумот за парни цифри. Збир на непарни: 7 + 5 + 3 = 15, бидејќи 15 е поголемо од 5, не треба да се вклучи.
+
+sample input: 
+2435 1030 4031 5902 821 132 1111 245 e
+sample output: 
+Broevi so zbir pogolem od 5: 3
+Broevi so zbir pomal ili ednakov na 5: 6
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    int zbirParniPogolemi = 0;
+    int zbirNeparniPomali = 0;
+
+    while (cin >> n) {
+        int zbirParniCifri = 0;
+        int zbirNeparniCifri = 0;
+
+        while (n > 0) {
+            int digit = n % 10;
+            if (digit % 2 == 0) {
+                zbirParniCifri += digit;
+            } else {
+                zbirNeparniCifri += digit;
+            }
+            n = n / 10;
+        }
+
+        if (zbirParniCifri > 5) {
+            zbirParniPogolemi++;
+        }
+        if (zbirNeparniCifri <= 5) {
+            zbirNeparniPomali++;
+        }
+    }
+    cout << "Broevi so zbir pogolem od 5: " << zbirParniPogolemi << endl;
+    cout << "Broevi so zbir pomal ili ednakov na 5: " << zbirNeparniPomali << endl;
+    return 0;
+}
