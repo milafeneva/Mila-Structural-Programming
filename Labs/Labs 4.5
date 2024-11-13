@@ -4,3 +4,49 @@
 Пример: Најпрво се внесуваат x и n (нека x = 23, n = 4). Потоа се внесуваат n (во случајов 4) броеви од тастатура (нека бидат 1234, 2333, 1122, 1114455). Броевите што треба да се испечатат на екран се:
 1234, 2333, затоа што во нив го содржат бројот х (во случајов 23).
 
+#include <iostream>
+using namespace std;
+
+int countDigits(int x) {
+    int count = 0;
+    while (x>0) {
+        x = x/10;
+        count++;
+    }
+    return count;
+}
+
+bool countOccurrence(int n, int x) {
+    int digitsX = countDigits(x);
+    int factor = 1;
+    for (int i = 1; i <= digitsX; i++) {
+        factor *= 10;
+    }
+    while (n >= x) {
+        if (n % factor == x) {
+            return true;
+        }
+        n /= 10;
+    }
+    return false;
+}
+
+int main() {
+    int n;
+    int x;
+    cin >> x;
+    cin >> n;
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        int currentNumber;
+        cin >> currentNumber;
+        if (countOccurrence(currentNumber, x)) {
+            cout << currentNumber << " ";
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "Nema";
+    }
+    return 0;
+}
