@@ -1,0 +1,54 @@
+Од тастатура се читаат 2 позитивни цели броеви поголеми од 0. Доколку се внесе барем еден негативен број или 0, се печати
+"Invalid input". Треба да се определи дали сумата на цифрите на непарните позиции на поголемиот број е еднаква со сумата на помалиот број.
+Соодветно да се испечати "ista suma" и "NE"
+(Позициите се читаат оддесно-налево)
+
+Sample input: 1357 64 
+Sample output: ista suma
+
+#include <iostream>
+using namespace std;
+
+int sumOfDigits(int n) {
+    int sum = 0;
+    while (n!=0) {
+        int digit = n%10;
+        sum += digit;
+        n = n/10;
+    }
+    return sum;
+}
+
+int main() {
+    int broj1, broj2;
+    cin >> broj1 >> broj2;
+    if (broj1 <= 0 || broj2 <= 0) {
+        cout << "Invalid input";
+        return 0;
+    }
+    int pogolemBroj;
+    int pomalBroj;
+    if (broj1 > broj2) {
+        pogolemBroj = broj1;
+        pomalBroj = broj2;
+    } else if (broj2 > broj1) {
+        pogolemBroj = broj2;
+        pomalBroj = broj1;
+    }
+    int position = 1;
+    int sum = 0;
+    while (pogolemBroj != 0) {
+        int digit = pogolemBroj % 10;
+        if (position % 2 != 0) {
+            sum += digit;
+        }
+        pogolemBroj /= 10;
+        position++;
+    }
+    if (sum == sumOfDigits(pomalBroj)) {
+        cout << "ista suma";
+    } else {
+        cout << "NE";
+    }
+    return 0;
+}
