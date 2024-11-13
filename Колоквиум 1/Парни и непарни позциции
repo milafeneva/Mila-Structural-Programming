@@ -1,0 +1,54 @@
+Од тастатура се внесуваат непознат број на цели броеви. Внесувањето завршува кога наместо број ќе биде внесен некаков знак. Да се напише програма која на екран ќе го испечати бројот чиј што збир на цифри на парни 
+позиции е најмал и бројот чиј што збир на непарни е најголем. Позициите започнуваат од најмалку значајната цифра и таа се наоѓа на позиција 1.
+Доколку повеќе од два броја имаат ист најмал збир на цифри на парни позиции, или ист најголем збир
+на цифри на непарни позиции, програмата да го испечати првиот од нив.
+
+За бројот 5094: збир на парни позиции = 9 + 5 = 14
+                збир на непарни = 4 + 0 = 4
+
+Sample input: 1234 4345 2345 7324 8643 2301 e
+Sample output: Najmal: 2301
+               Najgolem: 8643
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    int zbirParniPozicii;
+    int zbirNeparniPozicii;
+    int minParni =  INT_MAX;
+    int maxNeparni = INT_MIN;
+    int minParenBroj = 0;
+    int maxNeparenBroj = 0;
+
+    while (cin >> n) {
+        zbirParniPozicii = 0;
+        zbirNeparniPozicii = 0;
+        int temp = n;
+        int position = 1;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            if (position % 2 != 0) {
+                zbirNeparniPozicii += digit;
+            } else if (position % 2 == 0) {
+                zbirParniPozicii += digit;
+            }
+            temp = temp / 10;
+            position++;
+        }
+        if (zbirParniPozicii < minParni) {
+            minParni = zbirParniPozicii;
+            minParenBroj = n;
+        }
+        if (zbirNeparniPozicii > maxNeparni) {
+            maxNeparni = zbirNeparniPozicii;
+            maxNeparenBroj = n;
+        }
+    }
+    cout << "Najmal: " << minParenBroj << "\n";
+    cout << "Najgolem: " << maxNeparenBroj << "\n";
+
+    return 0;
+}
