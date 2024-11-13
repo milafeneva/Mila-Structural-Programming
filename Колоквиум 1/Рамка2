@@ -1,0 +1,32 @@
+Со помош на знаците + * и % се формира квадратна слика со должина m(m>2), која претставува квадрат од знаците 
+%, впишан од квадрат од знаците +, и *.
+Пример: 
+5
++***+
++%%%+
++%%%+
++%%%+
++***+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m;
+    cin >> m;
+    char a = '+';
+    char b = '*';
+    char c = '%';
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= m; j++) {
+            if (j == 1 || j == m) {
+                cout << a;
+            } else if (i == 1 || i == m) {
+                cout << b;
+            } else {
+                cout << c;
+            }
+        }
+        cout << endl;
+    }
+    return 0;
+}
