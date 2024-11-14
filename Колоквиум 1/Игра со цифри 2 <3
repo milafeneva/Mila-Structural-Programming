@@ -1,0 +1,51 @@
+Се читаат два броја, а и б. Напиши програма што ќе ги испечати сите броеви од а до б (а<b), така што
+бројот што се печати треба: да ги множи средните цифри на бројот (цифрите кои остануваат ако се извадат последната и првата цифра) и ако тие
+се делат со збирот на првата и последната, да ги печатиме.
+Не ги печати броевите кои имаат производ од средните цифри 0
+
+#include <iostream>
+using namespace std;
+
+int countDigits(int num) {
+    int count = 0;
+    while (num > 0) {
+        num /= 10;
+        count++;
+    }
+    return count;
+}
+int productOfMiddleDigits(int n) {
+    n /= 10;
+    int result = 1;
+    while (n > 10) {
+        int digit = n % 10;
+        result *= digit;
+        n /= 10;
+    }
+    return result;
+}
+int stickFirstAndLast(int m) {
+    int lastDigit = m % 10;
+    m /= 10;
+    while (m > 10) {
+        m /= 10;
+    }
+    int firstDigit = m % 10;
+    int result = firstDigit * 10 + lastDigit;
+    return result;
+}
+//55650 --> (150 == 50*3)
+//150 = 5*6*5
+int main() {
+    int a, b;
+    cin >> a >> b;
+    if (a > b) return 0;
+    for (int i = a; i < b; i++) {
+        int x = i;
+        int product = productOfMiddleDigits(x);
+        int firstAndLast = stickFirstAndLast(x);
+        if (product != 0 && product % firstAndLast == 0) {
+            cout << i << "-->" << "(" << product << " == " << firstAndLast << "*" << product/firstAndLast << ")" << endl;
+        }
+    }
+}
