@@ -1,0 +1,61 @@
+Програмата треба да прочита два цели броја a и b од стандардниот влез. Потоа, ќе ги испечати сите броеви од a до b (каде што a < b),
+*каде што бројот создаден од сите цифри од втората до претпоследната цифра на оригиналниот број
+*(цифрите што ќе останат ако ја отстраниме првата и последната цифра од оригиналниот број), во обратен редослед (прочитани од десно на лево
+*) е делив со бројот создаден како збир на првата и последната цифра. 
+За броеви со една и две цифри, бројот создаден од средните цифри е 0,
+*и овие броеви не се печатат. На крај, програмата ќе го испечати вкупниот број на вакви броеви.
+Пример: За бројот 82675, бројот создаден од цифрите од втората до претпоследната цифра, во обратен редослед е 762, а збирот на првата и
+последната цифра е (8 + 5) = 13. Кога ги печатите броевите, до секој број што го задоволува условот, испечатете ја равенката на условот во следниот облик:
+for example: 291 -> (9 == (1 + 2) * 3) 84575 -> (754 == (5 + 4) * 58)
+*/\
+
+#include <iostream>
+using namespace std;
+
+int countDigits(int n) {
+    int count = 0;
+    while (n != 0) {
+        n = n / 10;
+        count++;
+    }
+    return count;
+}
+int sumOfFirstAndLast(int m) {
+    int lastDigit = m % 10;
+    int sum = 0;
+    while (countDigits(m) > 1) {
+        m /= 10;
+    }
+    if (countDigits(m) == 1) {
+        int firstDigit = m % 10;
+        sum = firstDigit + lastDigit;
+    }
+    return sum;
+}
+int middleDigits(int num) {
+    num /= 10;  //
+    int reversedMiddle = 0;
+    while (num >= 10) {
+        reversedMiddle = reversedMiddle * 10 + num % 10;
+        num /= 10;
+    }
+    return reversedMiddle;
+}
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    if (a > b) return 0;
+    for (int i = a; i <= b; i++) {
+        int x = i;
+        if (countDigits(x) <= 2) {
+            continue;
+        }
+        int middle_Digits = middleDigits(x);
+        int sum = sumOfFirstAndLast(x);
+        if (middleDigits(x) != 0 && sum != 0 && middle_Digits % sum == 0) {
+            cout << i << " -> (" << middle_Digits << " == " << sum << " * " << (middle_Digits / sum) << ")" << endl;
+        }
+    }
+    return 0;
+}
