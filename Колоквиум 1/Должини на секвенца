@@ -1,0 +1,37 @@
+Од тастатура се внесува цел број m, а потоа непознат број цели броеви. Да се
+испечатат должините на секвенците составени од најмалку два
+последователни броја за кои истовремено важи:
+• следниот број е строго поголем од претходниот и
+• секој од нив има точно m цифри.
+Задачата да се реши без користење на низи
+
+#include <iostream>
+using namespace std;
+
+int countDigits(int n) {
+    int count = 0;
+    while (n != 0) {
+        n = n / 10;
+        count++;
+    }
+    return count;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int numbers;
+    int counter = 0;
+    int prethoden = 0;
+    while (cin >> numbers) {
+        if (n == countDigits(numbers) && numbers > prethoden) {
+            counter++;
+        } else {
+            if (counter> 1) {
+                cout << counter << " ";
+                counter = 0;
+            }
+        }
+        prethoden = numbers;
+    }
+}
