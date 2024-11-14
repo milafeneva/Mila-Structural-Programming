@@ -1,0 +1,47 @@
+Од стандарден влез се чита еден број кој претставува датум во формат DDMMYYYY
+(DD-ден, MM-месец, YYYY-година) кој го означува денешниот датум. Потоа се
+вчитува цел број N, по кој се вчитуваат N датуми на раѓање во дадениот
+формат. За секој од прочитаните N датуми на раѓање треба да се отпечати "DA"
+ако на денешниот ден (вчитан на почетокот) има повеќе или точно 18 години,
+а во спортивно "NE
+
+#include <iostream>
+using namespace std;
+
+//29.01.2005
+//
+int main() {
+    int date;
+    cin>>date;
+    int n;
+    cin>>n;
+    int day = date / 1000000;
+    int month = (date / 10000) % 100;
+    int year = date % 10000;
+    for (int i = 0; i < n; i++) {
+        int d;
+        cin>>d;
+        int yearD = d % 10000;
+        int dayD = d / 1000000;
+        int monthD = (d / 10000) % 100;
+        int years = year - yearD;
+        if (years < 18) {
+            cout << "NO" << endl;
+        } else if (years == 18) {
+            if (month > monthD) {
+                cout << "YES" << endl;
+            } else if (month == monthD) {
+                if (day >= dayD) {
+                    cout << "YES" << endl;
+                } else {
+                    cout << "NO" << endl;
+                }
+            } else {
+                cout << "NO" << endl;
+            }
+        } else if (years > 18) {
+            cout << "YES" << endl;
+        }
+    }
+    return 0;
+}
