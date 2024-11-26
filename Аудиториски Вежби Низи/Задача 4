@@ -1,0 +1,45 @@
+Да се напише програма која ќе провери дали дадена низа од n елементи која се чита од стандарден влез е строго растечка, строго опаѓачка или ниту строго растечка ниту строго опаѓачка. 
+Резултатот да се испечати на екран.
+
+#include <iostream>
+using namespace std;
+#define MAX 100
+
+bool rasteckaNiza(int array[], int n) {
+    for (int i = 0; i < (n-1); i++) {
+        if (array[i] > array[i+1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool opagackaNiza(int array[], int n) {
+    for (int i = 0; i < (n-1); i++) {
+        if (array[i] < array[i+1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int array[MAX];
+
+    for (int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+    bool rastecka = rasteckaNiza(array, n);
+    bool opagacka = opagackaNiza(array, n);
+
+    if (!rastecka && !opagacka) {
+        cout << "Nitu rastecka nitu opagacka" << endl;
+    } else if (rastecka) {
+        cout << "Nizata e strogo rastecka" << endl;
+    } else {
+        cout << "Nizata e strogo opagacka" << endl;
+    }
+    return 0;
+}
