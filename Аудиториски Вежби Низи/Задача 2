@@ -1,0 +1,39 @@
+Да се напише програма која за низа чии елементи се внесуваат од тастатура, ќе го пресмета збирот на парните елементи, збирот на непарните елементи, како и односот помеѓу бројот на парни и непарни елементи.
+Резултатот да се испечати на екран.
+
+Пример:
+За низата: 3 2 7 6 2 5 1 На екран ќе се испечати:
+    Sum even: 10
+    Sum odd: 16
+    Rel: 0.75
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arraySize;
+    cin >> arraySize;
+    int array[arraySize];
+    int evenSum = 0;
+    int oddSum = 0;
+    int evenCounter = 0;
+    int oddCounter = 0;
+
+    for (int i = 0; i < arraySize; i++) {
+        cin >> array[i];
+    }
+
+    for (int i = 0; i < arraySize; i++) {
+        if (array[i] % 2 == 0) {
+            evenSum += array[i];
+            evenCounter++;
+        } else {
+            oddSum += array[i];
+            oddCounter++;
+        }
+    }
+    float result = evenCounter/(oddCounter*1.0);
+    cout << "even elements: " << evenSum << endl;
+    cout << "odd elements: " << oddSum << endl;
+    cout << "result " << result << endl;
+}
