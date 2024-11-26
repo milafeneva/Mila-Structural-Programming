@@ -1,0 +1,36 @@
+Да се напише програма која за две низи кои се внесуваат од тастатура ќе провери дали се еднакви или не. 
+На екран да се испачати резултатот од споредбата. Максимална големина на низите е 100.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int firstSize, secondSize;
+    cin >> firstSize >> secondSize;
+    bool isEqual = true;
+    if (firstSize != secondSize) {
+        cout << "Nizite ne se ednakvi.";
+    } else {
+        int firstArray[firstSize];
+        int secondArray[secondSize];
+
+        for (int i = 0; i < firstSize; i++) {
+            cin >> firstArray[i];
+        }
+        for (int i = 0; i < secondSize; i++) {
+            cin >> secondArray[i];
+        }
+        isEqual = true;
+        for (int i = 0; i < firstSize; i++) {
+            if (firstArray[i] != secondArray[i]) {
+                isEqual = false;
+                break;
+            }
+        }
+        if (isEqual) {
+            cout << "Nizite se ednakvi.";
+        } else {
+            cout << "Nizite ne se ednakvi.";
+        }
+    }
+}
