@@ -1,0 +1,29 @@
+Да се напише програма која што ќе ги избрише дупликатите од една низа. 
+На крај, да се испечати на екран новодобиената низа. Елементите од низата се читаат од стандарден влез.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int array[n];
+
+    for (int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+    int deletedElements = 0;
+    for (int i = 0; i < n-deletedElements; i++) {
+        for (int j = i+1; j < n-deletedElements; j++) {
+            if (array[i] == array[j]) {
+                for (int k = j; k < n-1-deletedElements; k++) {
+                    array[k] = array[k+1];
+                }
+                deletedElements++;
+            }
+        }
+    }
+    for (int i = 0; i < n-deletedElements; i++) {
+        cout << array[i] << " ";
+    }
+}
