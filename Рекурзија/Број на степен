@@ -9,6 +9,10 @@ int function(int broj, int stepen) {
 }
 
 int main() {
-    int n = function(2, 4);
-    cout << n << endl;
+    int m;
+    int n;
+    cin >> m >> n;
+    int mNaN;
+    mNaN = function(m, n);
+    cout << mNaN << endl;
 }
