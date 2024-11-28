@@ -1,0 +1,35 @@
+За внесен број n, рекурзивно реши го килимот.
+парен број на тараба, непарен број на ѕвезди.
+ *****
+ ####
+ ***
+ ##
+ *
+
+#include <iostream>
+using namespace std;
+
+void pechatiRed(int n, char znak) {
+    if (n==0) {
+        cout << endl;
+        return;
+    }
+    cout << znak;
+    pechatiRed(n-1, znak);
+}
+
+void kilim(int n) {
+    if (n == 0) return;
+    if (n % 2 == 0) {
+        pechatiRed(n, '#');
+    } else {
+        pechatiRed(n, '*');
+    }
+    kilim(n-1);
+}
+
+int main() {
+    int a;
+    cin >> a;
+    kilim(a);
+}
