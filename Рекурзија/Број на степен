@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int function(int broj, int stepen) {
+    if (stepen == 0) return 1;
+    else {
+        return broj * function(broj, stepen - 1);
+    }
+}
+
+int main() {
+    int n = function(2, 4);
+    cout << n << endl;
+}
