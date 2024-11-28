@@ -1,0 +1,38 @@
+Да се напише програма која за матрица внесена од тастатура ќе ги замени елементите од главната дијагонала со разликата од максималниот и минималниот елемент во матрицата. 
+Резултантната матрица да се испечати на екран.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows, cols;
+    cin >> rows >> cols;
+    int min, max;
+    int array[rows][cols];
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> array[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (i == 0 && j == 0) {
+                min = max = array[i][j];
+            } else if (array[i][j] > max) {
+                max = array[i][j];
+            } else if (array[i][j] < min) {
+                min = array[i][j];
+            }
+        }
+    }
+    for (int i = 0; i < rows && i < cols; i++) {
+        array[i][i] = max - min;
+    }
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << array[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
