@@ -4,31 +4,29 @@
 using namespace std;
 
 int main() {
-    int rows;
-    int columns;
-    cin >> rows >> columns;
-    int array[rows][columns];
-    int symmetrical = 1;
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
+    int n;
+    cin >> n; 
+    int array[n][n];
+    bool symmetrical = true;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
             cin >> array[i][j];
         }
     }
-    for (int i = 0; i < rows-1; i++) {
-        for (int j = i+1; j < columns; j++) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
             if (array[i][j] != array[j][i]) {
-                symmetrical = 0;
+                symmetrical = false;
                 break;
             }
         }
-        if (!symmetrical) {
-            break;
-        }
+        if (!symmetrical) break;
     }
     if (symmetrical) {
         cout << "YES" << endl;
     } else {
         cout << "NO" << endl;
     }
+    return 0;
 }
-
