@@ -1,0 +1,34 @@
+Да се напише програма која за матрица внесена од тастатура ќе ја пресмета разликата на збирот на елементите на непарните колони и збирот на елементите на парните редици. 
+Матрицата не мора да биде квадратна.
+
+#include <iostream>
+using namespace std;
+
+// A B C D E
+
+int main() {
+    int rows;
+    cin >> rows;
+    int columns;
+    cin >> columns;
+    int matrix[rows][columns];
+    int oddColumns = 0;
+    int evenRows = 0;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            if ((j+1) % 2 != 0) {
+                oddColumns += matrix[i][j];
+            }
+            if ((i+1) % 2 == 0) {
+                evenRows += matrix[i][j];
+            }
+        }
+    }
+    cout << oddColumns - evenRows;
+    return 0;
+}
