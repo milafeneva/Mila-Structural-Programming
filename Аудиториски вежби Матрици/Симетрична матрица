@@ -30,3 +30,34 @@ int main() {
     }
     return 0;
 }
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int matrix[n][n];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    bool simetricna = true;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] != matrix[j][i]) {
+                simetricna = false;
+                break;
+            }
+        }
+        if (simetricna) {
+            break;
+        }
+    }
+    if (simetricna) {
+        cout << "Simetricna" << endl;
+    } else {
+        cout << "Not Simetricna" << endl;
+    }
+}
