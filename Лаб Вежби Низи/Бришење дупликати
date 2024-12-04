@@ -1,0 +1,27 @@
+се вчитува низа од тастатура со н членови, најди ги дупликатите од крајот на низата, по првото појавување на дупликатот, направи брејк и испечати ја низата. 
+input: 123121 outpu: 1231
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int array[n];
+    for (int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+    for (int i = 0; i<n; i++) {
+        for (int j = n-1; j>i; j--) {
+            if (array[i] == array[j]) {
+                for (int k = j; k <n-1; k++) {
+                    array[k] = array[k+1];
+                }
+                n--;
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        cout << array[i] << " ";
+    }
+}
