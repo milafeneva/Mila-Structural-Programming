@@ -1,0 +1,29 @@
+da se napise niza od brovi vo koja se proveruva kolku clnovite se pogolemi ili ednakvi na drugite: 
+input: 1 2 3 4 5
+Output: 
+[0]: 1: 4
+[1]: 2: 3
+[2]: 3: 2
+[3]: 4: 1
+[4]: 5: 0
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int array[n];
+    for (int i = 0; i < n; i++) {
+        cin >> array[i];
+    }
+    for (int i = 0; i < n; i++) {
+        int count = 0;
+        for (int j = 0; j < n; j++) {
+            if (array[j] >= array[i]) {
+                count++;
+            }
+        }
+        cout << "[" << i << "]" << array[i] << ":" << count-1 << endl;
+    }
+}
