@@ -1,0 +1,33 @@
+prvo vnesuvas n golemina na niza, i ja vcituvas od tastatura potoa naogas max i min clenovi i gi zamenuvas max i min, max vo min i min vo max i taka transformiranata niza ja pecatis
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     int n;
+     cin>>n;
+     int array[n];
+     for (int i = 0; i < n; i++) {
+          cin>>array[i];
+     }
+     int min = array[0];
+     int max = array[0];
+     for (int i = 0; i < n; i++) {
+          if (array[i] < min) {
+               min = array[i];
+          }
+          if (array[i] > max) {
+               max = array[i];
+          }
+     }
+     for (int i = 0; i < n; i++) {
+          if (array[i] == max) {
+               array[i] = min;
+          } else if (array[i] == min) {
+               array[i] = max;
+          }
+     }
+     for (int i = 0; i < n; i++) {
+          cout<<array[i]<<" ";
+     }
+}
