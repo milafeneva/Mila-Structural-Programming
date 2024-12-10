@@ -22,9 +22,9 @@ int dalieEprost(int n, int divisor) {
 
 int prvProst(int n) {
     if (dalieEprost(n, 2) == 1) {
-        return 1;
+        return n;  
     } else {
-        return prvProst(n+1);
+        return prvProst(n+1);  
     }
 }
 
