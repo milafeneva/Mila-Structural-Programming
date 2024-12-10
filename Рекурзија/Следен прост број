@@ -1,0 +1,35 @@
+Да се напише програма која за даден природен број ја пресметува разликата помеѓу најблискиот поголем од него прост број и самиот тој број.
+Програмата треба да користи рекурзивна функција за наоѓање на соодветниот прост број, која пак треба да користи рекурзивна функција за проверка дали даден број е прост број.
+Пример:
+Ако се внесе 573, програмата треба да испечати 577 - 573 = 4
+
+#include <iostream>
+using namespace std;
+
+// divisor = [2, n-1]
+int dalieEprost(int n, int divisor) {
+    if (divisor == n) {                             //dokolku stigne do n znaci e prost (ne bil napraven prekin)
+        return 1;
+    }
+    else {
+        if (n%divisor == 0) {                       //ako najdeme nekoj delitel na brojot vrakame 0 (ne e prost)
+            return 0;
+        } else {
+            return dalieEprost(n, divisor+1);       //proverka na sleden delitel
+        }
+    }
+}
+
+int prvProst(int n) {
+    if (dalieEprost(n, 2) == 1) {
+        return 1;
+    } else {
+        return prvProst(n+1);
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cout << prvProst(n) << endl;
+}
