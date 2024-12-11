@@ -1,0 +1,43 @@
+Од квадратна матрица со n редици и n колони да се најде колона со најголема сума на елементи и таа сума да се додаде на секој елемент и да се 
+испечати трансформираната матрица
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int matrica[100][100];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> matrica[i][j];
+        }
+    }
+    int maxSuma = INT_MIN;
+    int kolonaIndex = -1;
+
+    for (int j = 0; j < n; j++) {
+        int suma = 0;
+        for (int i = 0; i < n; i++) {
+            suma += matrica[i][j];
+        }
+        if (suma > maxSuma) {
+            maxSuma = suma;
+            kolonaIndex = j;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            matrica[i][j] += maxSuma;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matrica[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
