@@ -1,0 +1,45 @@
+Да се напише програма која чита две целобројни матрици со димензја m*n потоа печати колку колони од првата
+матрица се наоѓаат во втората матрица.
+
+#include <iostream>
+using namespace std;
+
+bool istiKoloni(int matrix[][100], int matrix2[][100], int rows, int kolona1, int kolona2) {
+    for (int i = 0; i < rows; i++) {
+        if (matrix[i][kolona1] != matrix2[i][kolona2]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int rows, columns;
+    cin >> rows >> columns;
+    int matrix[100][100], matrix2[100][100];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            cin >> matrix2[i][j];
+        }
+    }
+
+    int brojNaIstiKoloni = 0;
+
+    for (int kolona1 = 0; kolona1 < columns; kolona1++) {
+        for (int kolona2 = 0; kolona2 < columns; kolona2++) {
+            if (istiKoloni(matrix, matrix2, rows, kolona1, kolona2)) {
+                brojNaIstiKoloni++;
+                break;
+            }
+        }
+    }
+    cout << brojNaIstiKoloni;
+
+    return 0;
+}
