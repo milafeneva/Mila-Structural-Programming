@@ -1,0 +1,38 @@
+Од стандарден влез се вчитуваат 2 броја M и N, кои ја означуваат димензијата на матрицата,
+*MxN и потоа се внесуваат елементите во матрицата. Вашате задача е последниот елемент во секој
+*од редовите на матрицата, да го замените со максималниот елемент од таа редица. На крај испечатете
+*ја изменетата матрица и во нов ред среданта свредност на изменетата матицата.*/
+#include <iomanip>
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+    int matrix[m][n];
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    for (int i = 0; i < m; i++) {
+        int maxElement = matrix[i][0];
+        for (int j = 0; j < n; j++) {
+            if (matrix[i][j] > maxElement) {
+                maxElement = matrix[i][j];
+            }
+        }
+        matrix[i][n-1] = maxElement;
+    }
+    double sum = 0;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matrix[i][j] << " ";
+            sum += matrix[i][j];
+        }
+        cout << endl;
+    }
+    double avg = sum / (m*n);
+    cout << fixed << setprecision(2) << avg << endl;
+    return 0;
+}
