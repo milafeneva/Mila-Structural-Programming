@@ -1,0 +1,47 @@
+/*
+Од стандарден влез се чита цел број К, по што се читаат N цели броеви. Да се напише програма која за секој прочитан број на стандарден излез ќе 
+ги отпечати неговите цифри кои се поголеми од К, како и збирот на цифрите кои се отпечатени. 
+Печатењето на цифрите поголеми од K да се реализира со посебна рекурзивна функција.
+
+Пример: Доколку К = 5, за бројот 8423871 треба да се отпечати 887 : 23
+*/
+
+#include <iostream>
+using namespace std;
+
+long long sum = 0;
+
+void printDigits(long long number, long long k) {
+    if (number == 0) {
+        return;
+    }
+    long long digit = number % 10;
+    printDigits(number / 10, k);
+
+    if (digit > k) {
+        cout << digit;
+        sum += digit;
+    }
+}
+
+int main() {
+    long long k, n;
+    cin >> k >> n;
+
+    for (int i = 0; i < n; i++) {
+        long long a, reversed = 0;
+        cin >> a;
+
+        long long temp = a;
+        while (temp != 0) {
+            reversed = reversed * 10 + temp % 10;
+            temp /= 10;
+        }
+
+        sum = 0;
+        printDigits(reversed, k);
+        cout << " : " << sum << endl;
+    }
+
+    return 0;
+}
