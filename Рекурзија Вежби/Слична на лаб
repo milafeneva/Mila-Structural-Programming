@@ -1,0 +1,28 @@
+input: 5 12378
+output: 00011
+
+#include <iostream>
+using namespace std;
+
+
+void compareDigits(int number, int threshold) {
+    if (number == 0) {
+        return;
+    }
+    int currentDigit = number%10;
+    compareDigits(number/10, threshold);
+    if (currentDigit > threshold) {
+        cout << "1";
+    } else {
+        cout << "0";
+    }
+}
+
+int main() {
+    int threshold, inputNumber;
+    cin >> threshold;
+    cin >> inputNumber;
+    compareDigits(inputNumber, threshold);
+    cout << endl;
+
+}
