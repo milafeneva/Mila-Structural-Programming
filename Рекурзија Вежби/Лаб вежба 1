@@ -1,0 +1,24 @@
+Збир на парни цифри во внесен број
+
+#include <iostream>
+using namespace std;
+
+int sumEvenDigits(int n) {
+    if (n==0) {
+        return 0;
+    }
+    int lastDigit = n%10;
+    if (lastDigit % 2 == 0) {
+        return lastDigit + sumEvenDigits(n/10);
+    } else {
+        return sumEvenDigits(n/10);
+    }
+}
+
+int main() {
+    int number;
+    cin >> number;
+    number = abs(number);
+    int result = sumEvenDigits(number);
+    cout << result << endl;
+}
