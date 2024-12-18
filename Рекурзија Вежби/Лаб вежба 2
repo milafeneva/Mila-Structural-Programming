@@ -1,0 +1,34 @@
+рекурзивна функција во C++ со void што прима параметри char c и bool backwards за да печати сите букви од азбуката почнувајќи од таа буква. 
+Печатењето зависи од вредноста на backwards:
+Ако backwards е true, се печатат буквите наназад (од c до a).
+Ако backwards е false, се печатат буквите нанапред (од c до z)
+
+#include <iostream>
+using namespace std;
+
+void print(char c, bool backwards) {
+    if (backwards && c < 'a') return;
+    if (!backwards && c > 'z') return;
+
+    cout << c << " ";
+
+    if (backwards) {
+        print(c - 1, backwards);
+    } else {
+        print(c + 1, backwards);
+    }
+}
+
+int main() {
+    char n;
+    bool k;
+    cin >> n;
+    cin >> k;
+
+    if ((n < 'a' || n > 'z')) {
+        return 1;
+    }
+    print(n, k);
+
+    return 0;
+}
