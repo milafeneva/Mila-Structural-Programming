@@ -1,0 +1,37 @@
+Да се напише функција која во стринг што и се предава како влезен параметар ќе ги промени малите букви во големи и обратно, 
+и ќе ги отстрани сите цифри и специјални знаци.
+
+Пример
+За низата:
+0v@ePr1m3R
+треба да се добие:
+VEpRMr
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void swapLetters(char m[]) {
+    int i = 0, j = 0;
+    while (m[i] != '\0') {
+        if (isalpha(m[i])) {
+            if (islower(m[i])) {
+                m[j] = toupper(m[i]);
+            } else if (isupper(m[i])) {
+                m[j] = tolower(m[i]);
+            }
+            j++;
+        }
+        i++;
+    }
+    m[j] = '\0';
+}
+
+int main() {
+    int MAX = 100;
+    char m[MAX];
+    cin.getline(m, MAX);
+    swapLetters(m);
+    cout << m << " ";
+
+}
