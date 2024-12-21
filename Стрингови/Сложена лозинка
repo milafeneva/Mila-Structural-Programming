@@ -1,0 +1,38 @@
+Да се напише функција која за дадена текстуална низа ќе одредува дали таа е доволно сложена за да биде лозинка.
+Секоја лозинка мора да содржи барем една буква, барем една цифра и барем еден специјален знак.
+Пример
+zdr@v0! е валидна лозинка.
+zdravo не е валидна лозинка.
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int eValidnaLozinka(char lozinka[]) {
+    int bukvi = 0;
+    int cifri = 0;
+    int specZnak = 0;
+    for (int i = 0; lozinka[i] != '\0'; i++) {
+        if (isalpha(lozinka[i])) {
+            bukvi++;
+        } else if (isdigit(lozinka[i])) {
+            cifri++;
+        } else {
+            specZnak++;
+        }
+    }
+    return (bukvi > 0 && cifri > 0 && specZnak > 0);
+}
+
+int main() {
+    int MAX = 100;
+    char lozinka[MAX];
+    cin.getline(lozinka, MAX);
+    cout << lozinka << " ";
+    if (eValidnaLozinka(lozinka)) {
+        cout << "e validna lozinka.";
+    } else {
+        cout << "ne e validna lozinka";
+    }
+
+}
