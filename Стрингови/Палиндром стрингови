@@ -1,0 +1,26 @@
+Да се напише функција која ќе проверува дали дадена текстуална низа е палиндром.
+Една текстуална низа е палиндром ако таа се чита исто од лево на десно и од десно на лево.
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int ePalindrom(char str[], int start, int end) {
+    if (start >= end) return 1;
+    if (str[start] == str[end]) {
+        return ePalindrom(str, start+1, end-1);
+    }
+    return 0;
+}
+
+int main() {
+    int MAX = 100;
+    char m[MAX];
+    cin.getline(m, MAX);
+    cout << m << " ";
+    if (ePalindrom(m, 0, strlen(m)-1)) {
+        cout << "e palindrom" << endl;
+    } else {
+        cout << "ne e palindrom" << endl;
+    }
+}
