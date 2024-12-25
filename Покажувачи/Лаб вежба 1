@@ -1,0 +1,46 @@
+Опаѓачки редослед
+
+#include <iostream>
+using namespace std;
+
+void sort(int *a, int *b, int *c) {
+    int highest, lowest, middle;
+    if (*a > *b && *a > *c) {
+        highest = *a;
+        if (*b > *c) {
+            middle = *b;
+            lowest = *c;
+        } else {
+            middle = *c;
+            lowest = *b;
+        }
+    } else if (*b > *a && *b > *c) {
+        highest = *b;
+        if (*a > *c) {
+            middle = *a;
+            lowest = *c;
+        } else {
+            middle = *c;
+            lowest = *a;
+        }
+    } else {
+        highest = *c;
+        if (*a > *b) {
+            middle = *a;
+            lowest = *b;
+        } else {
+            middle = *b;
+            lowest = *a;
+        }
+    }
+    *a = highest;
+    *b = middle;
+    *c = lowest;
+}
+
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+    sort(&a, &b, &c);
+    cout << a << " " << b << " " << c << endl;
+}
