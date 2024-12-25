@@ -1,0 +1,50 @@
+For the needs of professors and assistants at FINKI, a program is required to scale the scores of students for a given exam.
+
+From the standard input, the scores of up to 100 students are to be read and stored in an array.
+
+Define a function void scale(int scores[], int n) that takes an array of numbers (the scores of students on the exam) and performs the scaling as follows:
+
+Find the maximum score on the exam (e.g., 88 out of 100).
+Calculate the ratio
+100/max
+100/max (e.g.,
+100/88
+=
+1.13636
+100/88=1.13636).
+Multiply all the scores in the array by this ratio so that the student with the highest score gets 100 points.
+Print the array with the scaled scores.
+The transformation should be done in-place, without using an auxiliary array.
+
+Input Result
+5
+10 20 30 40 82
+12.20 24.39 36.59 48.78 100.00
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void scale(int *scores, int n) {
+    int max = scores[0];
+    for (int i = 0; i < n; i++) {
+        if (max < scores[i]) {
+            max = scores[i];
+        }
+    }
+    float ratio = 100.0/max;
+    for (int i = 0; i < n; i++) {
+        float scaledScore = scores[i] * ratio;
+        cout << fixed << setprecision(2) << scaledScore << " ";
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int scores[n];
+    for (int i = 0; i < n; i++) {
+        cin >> scores[i];
+    }
+    scale(scores, n);
+}
