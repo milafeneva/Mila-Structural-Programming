@@ -1,0 +1,66 @@
+Напиши програма која ќе испечати колку зборови се палиндроми во дадена реченица (линија).
+
+Првен се вчитува бројот N, потоа се вчитуваат N линии.
+
+Напомена: искористи cin.ignore() после вчитување на N доколку користите cin.getline().
+
+Зборови од 1 буква се сметаат како палиндром, и проверката за палиндром да биде case-insensitive (Racecar е палиндром исто како и racecar)
+
+Не е дозволено користење на тип од string.
+Input	
+2
+Was it a car or a cat I saw
+Hello world
+result:
+Was it a car or a cat I saw: 3
+Hello world: 0
+
+#include <iostream>
+#include <cctype>
+#include <cstring>
+using namespace std;
+#define MAX 100
+
+bool daliEPalindrom(char *zbor) {
+    int len = strlen(zbor);
+    for (int i = 0; i < len / 2; i++) {
+        if (tolower(zbor[i]) != tolower(zbor[len - i - 1])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cin.ignore();
+    char niza[MAX][MAX];
+    for (int i = 0; i < n; i++) {
+        cin.getline(niza[i], MAX);
+    }
+
+    for (int i = 0; i < n; i++) {
+        int brojach = 0;
+        char zbor[MAX] = ""; 
+        int index = 0;
+
+        for (int j = 0; j <= strlen(niza[i]); j++) {
+            if (isalpha(niza[i][j])) {
+                zbor[index++] = niza[i][j];
+            } else {
+                if (index > 0) {
+                    zbor[index] = '\0'; 
+                    if (daliEPalindrom(zbor)) {
+                        brojach++;
+                    }
+                    index = 0; 
+                }
+            }
+        }
+
+        cout << niza[i] << ": " << brojach << endl; 
+    }
+
+    return 0;
+}
