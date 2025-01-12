@@ -1,0 +1,30 @@
+Со рекурзија да се напише програма и функција во која внесуваш н елементи и за секој елемент треба да 
+се пресметаат неговите цифри кои се помали од 5. Пример за 192856 бројот ќе се пресметаат 1+2 бидејќи се 
+помали од 5. И на крај да се испечати збирот. 
+
+#include <iostream>
+using namespace std;
+
+int presmetaj(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        int digit = n % 10;
+        if (digit < 5) {
+            return digit + presmetaj(n / 10);
+        } else {
+            return presmetaj(n / 10);
+        }
+    }
+}
+
+int main() {
+    int n, z;
+    cin >> z;
+    int sum = 0;
+    for (int i = 0; i < z; i++) {
+        cin >> n;
+        sum += presmetaj(n);
+    }
+    cout << sum;
+}
