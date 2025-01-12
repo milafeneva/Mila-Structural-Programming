@@ -1,0 +1,33 @@
+Внесуваш 2 низи од стрингови, и треба да направиш трета низа. На пример, ако внесените се ABCDE и EOCFA 
+третата се формира според првата и втората. Ако првата буква на првата низа се наоѓа на исто место како 
+во втората низа, во третата треба да се запише =, ако во првата има буква што било каде ја има во втората,
+во третата низа да се запише +, а ако ја нема -.
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char niza1[100], niza2[100], niza3[100];
+
+    cin.getline(niza1, 100);
+    cin.getline(niza2, 100);
+
+    int len1 = strlen(niza1);
+    int len2 = strlen(niza2);
+
+    for (int i = 0; i < len1; i++) {
+        if (i < len2 && niza1[i] == niza2[i]) {
+            niza3[i] = '='; 
+        } else if (strchr(niza2, niza1[i]) != nullptr) {
+            niza3[i] = '+'; 
+        } else {
+            niza3[i] = '-'; 
+        }
+    }
+
+    niza3[len1] = '\0';
+    cout  << niza3 << endl;
+
+    return 0;
+}
